@@ -14,7 +14,7 @@ class ChunkManifest {
         const register = (manifest, chunk) => {
           if (chunk.id in manifest) return manifest
 
-          manifest[chunk.id] = template.applyPluginsWaterfall('asset-path', filename, { hash, chunk })
+          manifest[chunk.id] = compilation.hooks.assetPath.call(filename, { hash, chunk });
 
           return chunk.chunks.reduce(register, manifest)
         }
