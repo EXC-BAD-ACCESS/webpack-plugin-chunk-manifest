@@ -16,7 +16,7 @@ class ChunkManifest {
 
           manifest[chunk.id] = compilation.hooks.assetPath.call(filename, { hash, chunk });
 
-          return chunkGroups.getChildren().reduce(register, manifest)
+          return manifest; //chunk.reduce(register, manifest)
         }
 
         if (filename) {
